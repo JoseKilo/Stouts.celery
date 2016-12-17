@@ -3,6 +3,8 @@
 celery_enabled: yes                                   # The role is enabled
 celery_remove: no                                     # Uninstall the role
 
+celery_service: systemd                               # Service manager to use
+
 celery_user: "{{deploy_user|default('root')}}"        # User to run celery
 celery_group: "{{deploy_group|default('root')}}"      # Group to run celery
 
