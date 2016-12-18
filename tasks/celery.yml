@@ -11,6 +11,7 @@
     owner=root group=root mode=0644
   with_items: "{{celery_run}}"
   when: celery_service == 'upstart'
+  become: yes
   notify: celery reload
 
 - name: Configure celery systemd
@@ -20,6 +21,7 @@
     owner=root group=root mode=0644
   with_items: "{{celery_run}}"
   when: celery_service == 'systemd'
+  become: yes
   notify: celery reload
 
 - name: Prepare log directories
