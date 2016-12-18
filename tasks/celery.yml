@@ -34,6 +34,7 @@
       state=started
       enabled=yes
   with_items: "{{celery_run}}"
+  become: yes
   changed_when: False
 
 - name: Setup logrotate
