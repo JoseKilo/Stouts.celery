@@ -39,6 +39,7 @@
 
 - name: Setup logrotate
   template: src=logrotate.conf.j2 dest=/etc/logrotate.d/{{celery_app_name}}-celery.conf
+  become: yes
 
 # vim:sw=2:ft=ansible
 
