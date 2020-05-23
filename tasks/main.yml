@@ -1,10 +1,10 @@
 ---
 
-- include: celery.yml
+- import_tasks: celery.yml
   when: celery_enabled and not celery_remove
   tags: [celery]
 
-- include: remove.yml
+- import_tasks: remove.yml
   when: celery_remove
   tags: [celery]
 
