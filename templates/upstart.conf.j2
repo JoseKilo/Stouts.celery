@@ -43,12 +43,13 @@ script
     {{line}}
     {% endfor %}
 
-    exec {{celery_bin}} --app="$CELERY_APP" \
+    exec {{celery_bin}} \
+        --app="$CELERY_APP" \
+        --workdir="$CELERY_CHDIR" \
         {{item.action}} $CELERY_QUEUE_ARG $CELERY_CONCURRENCY_ARG \
         --pidfile="$CELERY_PID_FILE" \
         --logfile="$CELERY_LOG_FILE" \
         --loglevel="$CELERY_LOG_LEVEL" \
-        --workdir="$CELERY_CHDIR" \
         --uid="$USER" \
         --gid="$GROUP" {% if item.action == 'beat' %}--schedule={{celery_beat_dbfile}}{% endif %}
 
